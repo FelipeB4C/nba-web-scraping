@@ -16,9 +16,17 @@ option.headless = True
 driver = webdriver.Firefox()
 
 driver.get(url)
+time.sleep(10)
 
-driver.quit()
+driver.find_element_by_xpath("//div[@class='nba-stat-table']//table//thead//tr//th[@data-field='PTS']").click()
+
+element = driver.find_element_by_xpath("//div[@class='nba-stat-table']//table")
+html_content = element.get_attribute('outerHTML')
+
+print(html_content)
+
 # 2. Parsear o conteúdo HTML - BeaultifulSoup
 # 3. Estruturar conteúdo em um Data Frame - Pandas
 # 4. Transformar os Dados em um Dicionário de dados próprio
+driver.quit()
 # 5. Converter e salvar em um arquivo JSON
